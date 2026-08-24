@@ -6,7 +6,19 @@ description-meta: "A reading route through available material on R, Quarto and r
 
 These notes are for researchers moving from manual Word-and-Excel workflows towards work that is easier to revisit, check and extend. The first beneficiary is usually you: the researcher returning after six months. The same record can later help collaborators, reviewers and successors.
 
-The notes help you decide what to learn, in what order, why it matters and when you know enough to move on — so you can build R, Quarto and Git into a reproducible research workflow. They do not teach the tools themselves.
+They aim to help you decide what to learn, in what order, why it matters and when you know enough to move on — so you can build R, Quarto and Git into a reproducible research workflow. They do not teach the tools themselves.
+
+The notes focus primarily on three tools with three different jobs:
+
+| Tool | What it is | What it contributes |
+|---|-----|-----|
+| **[R](https://www.r-project.org/)** | An open-source language for data science and statistical computing | Replaces many manual spreadsheet operations with explicit instructions for preparing, analysing and visualising data, creating a record that can be inspected and run again |
+| **[Quarto](https://quarto.org/)** | An open-source publishing system for creating technical and scientific documents, presentations and websites from structured source files | Brings prose, citations, code and generated results into one publishing workflow, so the publication can be regenerated when the analysis changes |
+| **[Git](https://git-scm.com/)** | A distributed version-control system for files | Tracks how a project changes over time, making versions easier to compare, restore and share |
+
+::: {.table-note}
+[Positron](https://positron.posit.co/) is a free, source-available IDE—an application used to write code, analyse data and draft reports; it is not R. [GitHub](https://github.com/) is an online service that hosts Git projects; it is not Git.
+:::
 
 ::: {.callout-note title="A navigation aid, not another software manual"}
 Detailed instructions already exist and change as the software changes. These notes point to maintained material and explain why to read it now, what it should help you accomplish and what you can leave until later.
@@ -14,7 +26,7 @@ Detailed instructions already exist and change as the software changes. These no
 
 ## One source system, several useful outputs
 
-Moving away from a WYSIWYG (what-you-see-is-what-you-get) document like that produced by Microsoft Word or PowerPoint does not mean giving up polished output. Quarto keeps prose, citations, computation and results in structured source, then uses that source in several publishing routes.
+Moving away from a WYSIWYG (what-you-see-is-what-you-get) document like one produced by Microsoft Word or PowerPoint does not mean giving up polished output. Quarto uses plain-text [Markdown](https://www.markdownguide.org/) to describe the structure of prose and other content, then renders that source into finished documents, presentations and websites. Because the source is text, Git can show meaningful changes to it; because formatting is applied during rendering, the same source can produce several output formats.
 
 ::: {.output-map aria-label="One source system supporting several outputs"}
 **Prose + citations + code + results**
