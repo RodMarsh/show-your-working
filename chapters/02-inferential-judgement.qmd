@@ -1,0 +1,163 @@
+---
+title: "Keeping inferential judgement visible"
+description: "Use literate programming to keep the judgements connecting evidence to a claim visible and available for others to inspect and test."
+---
+
+A project can rerun cleanly while leaving its central scientific choices unexplained. It may repeat the same exclusion, variable definition or model every time without showing why that path was preferred or whether another defensible path would change the conclusion.
+
+::: {.callout-important}
+## Tools are only part of reproducibility
+
+One purpose of reproducibility is not merely to make an answer repeatable, but to make its **warrant** inspectable: the evidence and reasoning that support the claim [@cartwright2012evidence; @cartwright2021].
+:::
+
+## The analysis contains judgement
+
+The path from evidence to claim has more steps than `data -> model -> result`:
+
+```text
+question
+  -> target population and quantity of interest
+  -> measurements and constructed variables
+  -> inclusion, exclusion and missing-data decisions
+  -> model and assumptions
+  -> diagnostics and revisions
+  -> estimate and uncertainty
+  -> interpretation
+  -> claim
+```
+
+At most of these points, no algorithm uniquely determines the next step. Researchers must decide, for example:
+
+- which observations represent the population of interest;
+- whether two measurements represent the same construct;
+- which variables are confounders, outcomes or consequences of the outcome;
+- how dependence, missingness and measurement error should be treated;
+- which model assumptions are tolerable; and
+- what size and uncertainty of an effect would matter scientifically.
+
+Some choices have a stronger justification than others, but most research questions admit of multiple reasonable choices at each of these steps. Where competent researchers differ, they usually differ in **inferential judgement**: the substantive and statistical reasoning that connects data to a claim.
+
+## What many-analyst studies reveal
+
+Many-analyst studies hold the data and research question approximately constant, then ask independent teams to analyse them. This isolates variation arising during the analytical and interpretive process.
+
+| Study | What was found | What it showed |
+|---|---|---|
+| **Silberzahn et al.** [@silberzahn2018]: 29 teams studied skin tone and red cards in football | Estimated odds ratios ranged from 0.89 to 2.93; 20 teams reported a significant positive association and 9 did not | Good-faith analytical choices changed effect estimates and conventional significance decisions; expertise, prior beliefs and peer ratings did not readily explain the variation. |
+| **Breznau et al.** [@breznau2022]: 73 teams tested an immigration and social-policy hypothesis | Estimates included negative, near-zero and positive effects; teams reached conclusions that supported, rejected or regarded the hypothesis as not testable | Even after the researchers coded identifiable decisions and researcher characteristics, 95.2% of the total variation in numerical results remained unexplained. |
+| **Gould et al.** [@gould2025]: 174 recruited teams analysed two ecological datasets | The average blue-tit result was clearly negative despite wide variation in magnitude; the Eucalyptus results included weak negative and positive relationships around an average close to zero | Analytical variation can reveal relative robustness in one case and serious dependence on choices in another. Peer ratings and broad features of the models did not cleanly distinguish estimates near and far from the average. |
+
+The studies do not show that all analyses are equally good, that results are arbitrary, or that averaging analysts reveals the truth. The teams can answer subtly different questions, rely on assumptions of unequal quality or make errors. A mean across analyses is a description of those analyses, not automatically the best estimate of the quantity of interest.
+
+The important lesson of these studies is that robustness must be investigated rather than presumed. Sometimes competent analysts converge; sometimes they do not.
+
+## The garden of forking paths
+
+Statistically significant findings in published research are frequently unreliable. The p-value, formalised as a test of significance by Ronald Fisher in the 1920s, is now one of the readier ways to dress up a noisy claim from a small sample. The core problem is multiple comparisons: any broad research hypothesis admits a vast number of defensible analytical choices (subgroups, exclusions, interactions, control variables), many of which could yield significance and all of which might fit the hypothesis being tested [@gelman2014].
+
+A researcher need not consciously fish through the data, or intend any misconduct, to fall into this trap. Even a p-value from a single test can be problematic if that test was chosen in light of the data; a different data set would have prompted a different, equally reasonable-seeming analysis. Following one deterministic path does nothing to escape the multiple-comparisons problem when the data themselves selected the path [@gelman2014].
+
+This “garden of forking paths” produces the same distortion as deliberate data-dredging (p-hacking) or hypothesising after the results are known (HARKing). It is most dangerous where effects are small, samples modest, measurement error large and variation high, since low statistical power makes even a significant result unreliable.
+
+@gelman2014 identify three distinct problems:
+
+| Problem | What drives the path? | Why it matters |
+|---|---|---|
+| **Selective analysis or reporting** | A result is preferred because it is significant, striking or expected | The reported path is a biased sample of the paths considered. |
+| **Data-dependent forking paths** | Apparently reasonable choices respond to patterns in the observed data | Uncertainty calculated as if the analysis had been fixed in advance may be misleading. |
+| **Good-faith analytical variation** | Analysts differ in how they translate a scientific question into variables, assumptions and models | Defensible paths can support materially different estimates or claims even without result-seeking. |
+
+These problems can coexist, but they require different responses. Preregistration can separate planned from unplanned analyses and reduce undisclosed result-seeking. It cannot force independent researchers to preregister the same plan, so it does not remove all analytical variation [@silberzahn2018].
+
+## What literate programming adds
+
+Literate programming treats a program as an explanation for people as well as instructions for a computer [@knuth1984]. In research, its special value is that prose, code and output can preserve different parts of the inferential record:
+
+- **code** records what instruction was executed;
+- **prose** records why the instruction was scientifically reasonable; and
+- **output** shows the consequence of executing it.
+
+Simply placing prose and code in the same `.qmd` file is not enough. A useful document records consequential decisions near the code they govern. For each central decision, capture five things:
+
+| Record | Prompt |
+|---|---|
+| **Choice** | What did we decide? |
+| **Reason** | What scientific or statistical reason supports it? |
+| **Timing** | Was it decided before or after inspecting the relevant result? |
+| **Alternatives** | Which other defensible choices were considered? |
+| **Consequence** | Does the result or claim change under those alternatives? |
+
+You can capture each of these five things in a Quarto document alongside the code for your analysis:
+
+```markdown
+### Decision: account for repeated observations by site
+
+**Choice.** Include site as a grouping term.
+
+**Reason.** Observations from the same site share conditions and are not
+independent. This structure follows the sampling design.
+
+**Timing.** Specified before examining the treatment estimate.
+
+**Alternatives.** Site fixed effects and site-clustered standard errors were
+also defensible for this question.
+
+**Consequence.** The estimated magnitude changes across the three approaches,
+but its direction and the substantive conclusion do not.
+```
+
+This record is more informative than `# account for site`. It lets a reader inspect both the route taken and the reason it was preferred.
+
+Working notes that should not reach the reader can stay in the same source as Markdown comments (`<!-- ... -->`), which Quarto does not render. That keeps a “lab notebook” for the authors beside the analysis rather than in a separate file.
+
+## Expose the consequential forks
+
+It is rarely possible or useful to run every imaginable model. Robustness analysis focuses on alternatives that are scientifically defensible and that address the same question. Running thousands of arbitrary specifications does not remove judgement: someone must still decide which models are admissible, whether they estimate the same quantity and what variation would change the conclusion [@steegen2016; @gould2025].
+
+To investigate robustness, consider how you could:
+
+1. identify decisions that could plausibly alter the estimate or claim;
+2. state the scientific constraints on reasonable alternatives;
+3. run a small, informative set first;
+4. show the distribution of results when a larger multiverse is warranted; and
+5. explain what remains stable and what depends on the path.
+
+Do not use the primary analysis as the hero and label every alternative a “robustness check” after the fact. Explain why the primary path is preferred, and report an alternative honestly when it changes the conclusion.
+
+## Record decisions before and during analysis
+
+When a decision can be made before inspecting the result, record it then. A time-stamped analysis plan or preregistration makes the timing visible [@munafoManifestoReproducibleScience2017]. Exploration is still valuable, but label it as exploration and distinguish new hypotheses from planned tests.
+
+Some analyses cannot be fixed completely in advance. A model choice may depend on a diagnostic, or an early stage may reveal a data property that determines the next step. Adaptive preregistration addresses this by recording decision rules and a sequence of interim plans: specify the diagnostic, the possible outcomes and the action each outcome will trigger, then save the next plan before proceeding [@gould2026]. Deviations remain possible; they should be identified and justified.
+
+You do not need a formal registration for every exercise. The transferable habit is to make a prospective record when possible and to mark clearly when observation changed the plan.
+
+## Questions to ask about a central claim
+
+For a report that supports a central claim, it helps if a qualified reader can:
+
+- trace the claim to a reported result, code and identified data;
+- see the target population and quantity the analysis is intended to estimate;
+- find reasons for the important data-processing and modelling decisions;
+- distinguish planned, exploratory and revised analyses;
+- inspect the most consequential defensible alternatives; and
+- understand which parts of the conclusion are stable and which depend on judgement.
+
+Quarto and R (or Python, Julia etc.) can make this record easier to maintain because explanation, computation and result can change together. They provide a helpful medium; the warrant still comes from the research reasoning.
+
+::: {.route}
+## Need: see the evidence and start the habit
+
+**Why it matters.** The habit of recording judgement is easier to sustain once you have seen how far defensible choices can move results. These sources provided the basis for the discussion in this chapter.
+
+**Read in this order.** Start with Gelman and Loken's [The statistical crisis in science](https://doi.org/10.1511/2014.111.460) for the clearest account of forking paths without result-seeking [@gelman2014]. Then read [Many analysts, one data set](https://doi.org/10.1177/2515245917747646) as the canonical many-analyst demonstration [@silberzahn2018]. Read [Increasing transparency through a multiverse analysis](https://doi.org/10.1177/1745691616658637) when you plan a robustness analysis [@steegen2016], and the [adaptive preregistration guidance](https://doi.org/10.1111/2041-210X.70311) when parts of an analysis cannot be fixed in advance [@gould2026].
+
+**You have enough when.** Choose one important claim in your own project and find the result that supports it. You have enough when you can add a decision record containing the choice, reason, timing, alternatives and consequence. If you can reproduce the number but cannot explain why its analytical path was preferred, there is useful documentation still to add.
+
+**Leave until later.** A full multiverse or many-analyst exercise is not a useful entry point. A small set of scientifically defensible alternatives for one central claim teaches more than thousands of arbitrary specifications.
+:::
+
+The remaining chapters put this habit inside a working document: the first reading path asks for a decision record in your first integrated document, and the project record gives those records a durable home.
+
+Next: [A first reading path](03-first-reading-path.qmd).
