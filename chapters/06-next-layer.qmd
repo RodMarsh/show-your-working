@@ -1,0 +1,83 @@
+---
+title: "Add another layer only when needed"
+description: "Match environments, pipelines, tests, containers and data infrastructure to a failure mode that has actually appeared."
+---
+
+Progressive complexity means (a) recognising the problem a tool solves, and (b) not adding a tool for a problem the project does not yet have.
+
+| Problem that has appeared | Layer to consider |
+|---|---|
+| Package updates or different machines change the analysis | `{renv}` |
+| It is unclear which results are out of date, or a full rerun takes too long | `{targets}` |
+| Repeated logic or silent data errors are becoming risky | functions and tests |
+| System libraries or external programs matter | a container (e.g. Docker) or documented system environment |
+| A required method lives in another language | another computational language |
+| Data do not fit comfortably in memory | Arrow, DuckDB or database-side work |
+| Large data versions must remain aligned with Git revisions | DVC and approved remote storage |
+
+This table is a diagnostic aid, not a recommended software stack.
+
+::: {.route}
+## Need: preserve the R package environment
+
+**Why it matters.** A script can remain unchanged while a package update alters an interface or result. This matters more as projects move between computers, collaborators or years.
+
+**Read in this order.** Begin with the [`{renv}` introduction](https://rstudio.github.io/renv/articles/renv.html) to understand project libraries, lockfiles and restoration. Read its collaboration and continuous-integration material only if the project is actually moving between people or machines.
+
+**You have enough when.** A fresh R installation can identify and restore the package versions intended by the project, and the lockfile is part of the same version history as the analysis.
+
+**Leave until later.** `{renv}` does not record every system library, external program or operating-system detail. Do not add a container like Docker merely to compensate for a system dependency that the project does not have.
+:::
+
+::: {.route}
+## Need: stop remembering the rerun order by hand
+
+**Why it matters.** A short written sequence is often sufficient. It becomes fragile when the project has expensive stages, branching analyses, several products, outputs that can silently become stale, or complex analysis that takes time to rerun.
+
+**Read in this order.** Read the [`{targets}` walkthrough](https://books.ropensci.org/targets/walkthrough.html) before the full [`{targets}` user manual](https://books.ropensci.org/targets/). If repeated logic is the immediate problem, begin instead with the functions and testing sections of [R Packages](https://r-pkgs.org/), especially [Testing basics](https://r-pkgs.org/testing-basics.html).
+
+Treat checks as scientific guardrails as well as software tests: identifiers should be unique where expected, joins should not silently lose or multiply rows, values should remain within possible ranges and exclusions should remain counted.
+
+**You have enough when.** The dependency structure identifies which results are out of date, and important assumptions fail visibly rather than producing a plausible but wrong report.
+
+**Leave until later.** Do not build a pipeline to make a three-step analysis look sophisticated. Do not turn every line into a function or test before repetition and risk justify the maintenance cost.
+:::
+
+::: {.route}
+## Need: preserve more than language packages
+
+**Why it matters.** Analyses may depend on operating-system libraries, command-line programs, geospatial tools or several languages. A container can describe more of that environment, but adds installation, storage, update and security responsibilities.
+
+**Read in this order.** Start with The Turing Way's [Containers for reproducible research](https://book.the-turing-way.org/reproducible-research/renv/renv-containers/) chapter before choosing Docker, Podman or an HPC-oriented alternative. Use Quarto's engine documentation for [Python](https://quarto.org/docs/computations/python.html), [Julia](https://quarto.org/docs/computations/julia.html) or [Observable JS](https://quarto.org/docs/interactive/ojs/) when a required method or maintained component genuinely belongs in another supported language.
+
+**You have enough when.** A new authorised environment can obtain the declared system dependencies and each language has a documented owner, interface and output.
+
+**Leave until later.** A project using only ordinary R packages does not become more reproducible merely by adding a container or another language.
+:::
+
+::: {.route}
+## Need: work with data that no longer fit the simple project
+
+**Why it matters.** “Large data” can mean a file too large for Git, a dataset too large for memory, versions too expensive to copy or concurrent updates requiring a database. Each of these problems needs a different response.
+
+**Read in this order.** Identify the problem before choosing infrastructure:
+
+1. For data larger than memory, begin with the [Arrow R documentation](https://arrow.apache.org/docs/r/) or [DuckDB's R client](https://duckdb.org/docs/stable/clients/r). Learn to filter and aggregate near the data before bringing a smaller result into R.
+2. For immutable published data, prefer a documented DOI, version, checksum and retrieval step over copying the data into Git.
+3. When changing large datasets must remain aligned with analysis revisions, read [DVC: Get Started](https://doc.dvc.org/start) to understand content-addressed data pointers and remote storage.
+4. Choose Amazon S3, Cloudflare R2 or another object store only after institutional governance, location, identity, retention, recovery and cost requirements are known; then use that provider's current documentation.
+
+DVC connects a Git revision to content stored elsewhere. It is not itself a backup, preservation archive, access-control policy or explanation of the data.
+
+**You have enough when.** An authorised researcher can identify, retrieve and interpret the exact data version required by a specific analysis revision, and recovery has been tested independently of any working cache.
+
+**Leave until later.** A stable external dataset with a durable identifier may need only documented retrieval. Do not introduce DVC or cloud storage solely because a file feels inconvenient.
+:::
+
+## Questions that survive every infrastructure choice
+
+Large or remote data still need provenance, a schema and data dictionary, units, missing-value conventions, licence and consent conditions, a version identifier and a documented path from authorised access to the analytical result. Infrastructure can move bytes; it cannot supply their meaning.
+
+Whichever layer a project ends up needing, its readers still encounter the work as a report, a paper, a set of slides or a dashboard. The last chapter matches those destinations to your maintained work.
+
+Next: [Paths to common destinations](07-destination-paths.qmd).

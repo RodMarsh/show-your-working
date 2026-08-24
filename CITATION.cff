@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you refer to this work, please cite it as below."
+title: "Show Your Working: A reading path to a research record that explains itself"
+abstract: >-
+  A reading route through maintained material on R, Quarto and research
+  practice, focused on the limits and purposes of reproducibility.
+authors:
+  - family-names: Marsh
+    given-names: Rod
+type: book
+license: CC-BY-4.0
+repository-code: "https://github.com/RodMarsh/reproducibleResearch"

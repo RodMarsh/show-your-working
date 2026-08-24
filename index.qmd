@@ -1,0 +1,69 @@
+---
+title: "Show Your Working"
+subtitle: "A reading path to a research record that explains itself"
+description: "A reading route through available material on R, Quarto and research practice focused on the limits and purposes of reproducibility."
+---
+
+These notes do not teach R, Quarto or Git. They help you decide **what to learn, in what order, why it matters and when you know enough to move on** to include these tools in a reproducible research workflow.
+
+They are for researchers moving from manual Word-and-Excel workflows towards work that is easier to revisit, check and extend. The first beneficiary is usually you: the researcher returning after six months. The same record can later help collaborators, reviewers and successors.
+
+::: {.callout-note title="A navigation aid, not another software manual"}
+Detailed instructions already exist and change as the software changes. These notes point to maintained material and explain why to read it now, what it should help you accomplish and what you can leave until later.
+:::
+
+## One source system, several useful outputs
+
+Moving away from a WYSIWYG (what-you-see-is-what-you-get) document like that produced by Microsoft Word or PowerPoint does not mean giving up polished output. Quarto keeps prose, citations, computation and results in structured source, then uses that source in several publishing routes.
+
+::: {.output-map aria-label="One source system supporting several outputs"}
+**Prose + citations + code + results**
+
+↓
+
+**HTML report** · **PDF via LaTeX or Typst** · **DOCX** · **reveal.js slides** · **dashboard with Observable JS**
+:::
+
+The [Quarto Gallery](https://quarto.org/docs/gallery/) shows the range: HTML, print-quality PDF and Word reports; reveal.js, PowerPoint and Beamer presentations; and interactive dashboards made with R, Python or Observable JS. The [format reference](https://quarto.org/docs/reference/formats/) links to the maintained options for each destination.
+
+Quarto reports can usually share one source directly across HTML, PDF and DOCX. Slides need pacing and slide structure; dashboards need layout and interaction.
+
+## Why keep an integrated record?
+
+In a manual workflow, the steps between the source data and the reported result can disappear:
+
+> source data → undocumented edits → copied values → figure or report
+
+In a computationally reproducible workflow, those steps become inspectable:
+
+> source data → code → analysis → figures and tables → report
+
+Practical, incremental habits are more useful than an elaborate system that nobody can maintain [@wilson2017; @sandve2013]. But an integrated document is only part of the answer: code can rerun a poor design or an unexplained analytical choice perfectly. The first chapters therefore begin with what reproducibility means and why extending computational reproducibility to record inferential judgement adds value to research practice.
+
+## How to use each route
+
+Each reading route in this document uses the same five prompts:
+
+1. **Need** — the problem in front of you.
+2. **Why it matters** — its connection to research practice.
+3. **Read in this order** — a small selection of maintained sources.
+4. **You have enough when** — a when-to-stop, minimum learning rule.
+5. **Leave until later** — further routes and reading to consider if you need to take them.
+
+The order is progressive. Begin with the conceptual chapters, follow the first reading path, and return to later routes when a real need appears. You do not have to finish every linked resource before doing useful work.
+
+If the statistical examples in [Keeping inferential judgement visible](chapters/02-inferential-judgement.qmd) are ahead of your experience, just take the chapter's central claim with you—*reproducing a number is not the same as justifying it*—and continue to the first reading path. Return once your own analyses raise the questions this chapter attempts to answer.
+
+## The path through these notes
+
+| Part | Question it answers |
+|---|---|
+| **Understand the point** | What can these tools make visible, and what can they never decide? |
+| **Follow the need in front of you** | What should I read first for an integrated document, a project record, version history and citations? |
+| **Extend deliberately** | Which added layer addresses the problem I now have, and which destination-specific material should I read? |
+
+## The limits of these notes
+
+This is not an R course, a Git manual, a complete account of reproducible research or a data-management policy. It cannot determine whether data may be made public: ethics approval, consent, licences, Indigenous data governance, contracts and institutional policy obviously still apply.
+
+Next: [What the tools can—and cannot—do](chapters/01-tools-and-reproducibility.qmd).

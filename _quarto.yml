@@ -1,0 +1,48 @@
+project:
+  type: book
+  output-dir: _book
+  render:
+    - index.qmd
+    - chapters/*.qmd
+
+book:
+  title: "Show Your Working"
+  subtitle: "A reading path to a research record that explains itself"
+  author: "Rod Marsh"
+  site-url: "https://rodmarsh.github.io/show-your-working/"
+  repo-url: "https://github.com/RodMarsh/show-your-working"
+  page-navigation: true
+  search:
+    location: sidebar
+    type: textbox
+  chapters:
+    - index.qmd
+    - part: "Understand the point"
+      chapters:
+        - chapters/01-tools-and-reproducibility.qmd
+        - chapters/02-inferential-judgement.qmd
+    - part: "Follow the need in front of you"
+      chapters:
+        - chapters/03-first-reading-path.qmd
+        - chapters/04-project-record.qmd
+        - chapters/05-change-and-sources.qmd
+    - part: "Extend deliberately"
+      chapters:
+        - chapters/06-next-layer.qmd
+        - chapters/07-destination-paths.qmd
+    - chapters/references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.scss
+    toc: true
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    link-external-newwindow: true
+
+editor: source

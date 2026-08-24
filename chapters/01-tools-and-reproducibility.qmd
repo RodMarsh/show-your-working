@@ -1,0 +1,80 @@
+---
+title: "What the tools can—and cannot—do"
+description: "Distinguish a rerunnable computation from reproducible methods, results and inference."
+---
+
+R can execute an analysis. Quarto can reconnect the source with tables, figures and prose. Git can record change. None of them can decide whether the measurements, design, model or interpretation are correct or appropriate.
+
+Just because “the code ran” does not mean the analysis or conclusion is sound.
+
+## Reproducing what?
+
+Terminology varies among disciplines. Goodman, Fanelli and Ioannidis proposed three descriptors that make the object of a reproducibility claim explicit [@goodman2016]:
+
+| Descriptor | Question |
+|---|---|
+| **Methods reproducibility** | Is there enough detail about the procedures and data to repeat them and obtain the same result? |
+| **Results reproducibility** | Does a new study using closely matched procedures produce a corroborating result? |
+| **Inferential reproducibility** | Does a reanalysis or replication support a knowledge claim of similar strength? |
+
+These notes use **computationally reproducible** for the narrower situation in which available data, code and a documented environment can regenerate the reported output. That is an important part of methods reproducibility; it does not guarantee either new corroborating evidence or agreement about what the evidence warrants.
+
+## Five increasingly demanding questions
+
+These questions ask what is actually *reproducible* in your research project:
+
+| Focus | Question |
+|---|---|
+| **Computation** | Can the same inputs and code regenerate the output? |
+| **Procedure** | Can another researcher reconstruct what was done? |
+| **Judgement** | Can they see why consequential choices were made? |
+| **Robustness** | Does the result survive other scientifically defensible choices? |
+| **Inference** | Do competent researchers confronting the evidence reach a substantially similar claim? |
+
+Project structure, code, version history and environment records can help with the first two. The last three require scientific explanation, comparison and, ultimately, other analysts or new evidence.
+
+## What a useful project record can answer
+
+For a central result, it helps if the record answers:
+
+- Where did each dataset come from, and what licence or access conditions apply?
+- Which files are original and which are derived?
+- What transformations, exclusions and constructed variables were used?
+- Which code produced each figure, table and reported number?
+- What software and external services were required?
+- What sequence regenerates the main output from a fresh session?
+- Which data or outputs cannot be shared, and why?
+- Where are the assumptions, limitations and reasons for analytical choices recorded?
+
+These questions are useful even when confidentiality prevents public data or when no external reader will see the project. Their first purpose is to reduce reliance on your own memory.
+
+## A successful render only tells you that the computations run
+
+Rendering from a fresh session is what exposes missing packages, hidden manual steps, absolute paths, unstated execution order and objects left in an interactive workspace: the render fails, or produces a different result, where the document depended on something undocumented. Automating that render shows the documented build still succeeds in a clean environment.
+
+It cannot show that:
+
+- the units or measurements are meaningful;
+- missing data and joins were handled appropriately;
+- exclusions answer the intended scientific question;
+- model assumptions are defensible;
+- uncertainty is represented honestly; or
+- the prose makes a warranted claim.
+
+Software checks are only part of a wider scientific check.
+
+::: {.route}
+## Need: assess the record you already have
+
+**Why it matters.** A tool-shopping exercise is premature until you know which parts of the path from evidence to claim are currently invisible.
+
+**Read in this order.** Start with [Good enough practices in scientific computing](https://doi.org/10.1371/journal.pcbi.1005510) for pragmatic habits aimed at researchers [@wilson2017]. Then use [The Turing Way's reproducible-research guide](https://book.the-turing-way.org/reproducible-research/reproducible-research/) as a maintained map of the broader topic. Read Goodman, Fanelli and Ioannidis when you need precision about which kind of reproducibility is being claimed [@goodman2016].
+
+**You have enough when.** You can name the weakest link in your current record—computation, procedure, judgement, robustness or inference—and describe the evidence needed to improve it.
+
+**Leave until later.** Do not choose package managers, pipelines, containers or cloud storage merely because they are associated with reproducibility. Adopt them only when a later route matches a problem you actually have.
+:::
+
+The next chapter concentrates on the step tools most easily obscure: the judgement connecting evidence to a claim.
+
+Next: [Keeping inferential judgement visible](02-inferential-judgement.qmd).

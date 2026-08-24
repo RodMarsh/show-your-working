@@ -1,0 +1,11 @@
+/.quarto/
+/_book/
+/archive/
+/.DS_Store
+/.Rhistory
+/.RData
+/.Ruserdata
+/.vscode/
+/.positron/
+/notes/
+/papers/
