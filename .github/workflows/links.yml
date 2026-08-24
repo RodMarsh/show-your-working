@@ -1,0 +1,43 @@
+name: Check links
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render book
+        run: quarto render
+
+      # Publishers and some documentation sites refuse requests from CI
+      # addresses. Accept the status codes that prove the host answered and
+      # exclude the hosts that refuse the connection outright, so the run
+      # fails only on links that are genuinely gone.
+      - name: Check rendered links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          args: >-
+            --cache
+            --max-cache-age 1d
+            --no-progress
+            --accept 200,206,403,429
+            --exclude '^https?://(www\.)?quarto\.org/'
+            --exclude '^https?://book\.the-turing-way\.org/'
+            --timeout 30
+            --max-retries 3
+            --retry-wait-time 5
+            --root-dir "${{ github.workspace }}/_book"
+            "_book/**/*.html"

@@ -1,0 +1,74 @@
+---
+title: "Paths to common destinations"
+description: "Choose maintained material for reports, papers, slides, dashboards and shared or archived projects."
+---
+
+Quarto can support several destination file types, but the intended reader should still determine the form. A web report, thesis, presentation and interactive dashboard organise attention differently. Reuse the research record; tailor its presentation.
+
+::: {.route}
+## Need: produce a report
+
+**Why it matters.** A report may need the accessibility and navigation of HTML, the fixed pages of PDF or the editable hand-off of DOCX. Choosing the destination first prevents formatting work from taking over the analysis.
+
+**Read in this order.** Start with Quarto's [All Formats](https://quarto.org/docs/output-formats/all-formats) overview and the [authoring tutorial](https://quarto.org/docs/get-started/authoring/) section on multiple formats. Then read only the route required by the reader: [HTML basics](https://quarto.org/docs/output-formats/html-basics.html), [MS Word](https://quarto.org/docs/output-formats/ms-word.html), [PDF basics](https://quarto.org/docs/output-formats/pdf-basics.html) for LaTeX-based output, or [Typst basics](https://quarto.org/docs/output-formats/typst.html) for the much faster Typst PDF route.
+
+If the destination requires PDF, use one toolchain rather than installing everything. Quarto's [format reference](https://quarto.org/docs/reference/formats/pdf.html) lists routes through LaTeX, Typst, ConTeXt and HTML-to-PDF tools; its [PDF engines](https://quarto.org/docs/output-formats/pdf-engine.html) page explains the LaTeX toolchain. Typst is a particularly quick option for repeated drafting. When a venue requires LaTeX, follow Quarto's guidance and choose either its cross-platform TinyTeX route or a conventional distribution for [macOS](https://www.tug.org/mactex/), [Windows](https://miktex.org/howto/install-miktex) or [GNU/Linux](https://tug.org/texlive/).
+
+**You have enough when.** The report source regenerates the required format, computed results are not copied manually and the output has been checked in the medium the reader will receive.
+
+**Leave until later.** Custom themes, reference documents, alternative PDF engines and format extensions can wait until the simplest suitable output fails a real communication or submission requirement.
+:::
+
+::: {.route}
+## Need: prepare a paper or thesis
+
+**Why it matters.** A manuscript adds cross-references, bibliographic conventions, supplementary material and submission requirements. Each is a place where a number or a reference can drift away from the analysis that produced it, and venue requirements are usually discovered late enough to force rework.
+
+**Read in this order.** Read Quarto's [Manuscripts](https://quarto.org/docs/manuscripts/) overview to understand the project model. Choose the LaTeX or Typst PDF path from the report route only after checking the journal, publisher or graduate school's current author instructions. Use the [Quarto extensions listing](https://quarto.org/docs/extensions/) to discover a possible format, but verify any community extension against the submission venue's official template before relying on it.
+
+**You have enough when.** The manuscript source, references, figures and supplementary outputs are connected, and the rendered submission has been checked against the destination's current requirements.
+
+**Leave until later.** Do not adapt a specific journal, university or other specialist template before a real destination has been chosen. A Typst route is fast and attractive for drafting, but it is not automatically interchangeable with a required LaTeX class.
+:::
+
+::: {.route}
+## Need: present the work as slides
+
+**Why it matters.** Slides are not a report cut into rectangles. They need pacing, visual hierarchy and material selected for a live audience, even when the figures and analysis come from the same project.
+
+**Read in this order.** Begin with Quarto's [Presentations](https://quarto.org/docs/presentations/) overview, then follow the [reveal.js](https://quarto.org/docs/presentations/revealjs/) material for flexible HTML slides. Use PowerPoint only when an editable Office file is required and Beamer when a LaTeX/PDF workflow is required.
+
+**You have enough when.** The slides reuse authoritative project outputs, work in the presentation environment and have been rehearsed for the actual audience and time available.
+
+**Leave until later.** Advanced reveal.js plugins, custom transitions, Beamer themes and print-to-PDF options can wait until the basic narrative works.
+:::
+
+::: {.route}
+## Need: let readers explore an interactive dashboard
+
+**Why it matters.** A dashboard is useful when readers need to filter, compare or inspect information rather than follow one fixed argument. Interactivity also creates choices about execution, deployment and what a user can infer from changing a view.
+
+**Read in this order.** Browse the [dashboard examples](https://quarto.org/docs/dashboards/#examples), then read the rest of [Quarto Dashboards](https://quarto.org/docs/dashboards/) for layout and publishing. Use [Interactive Dashboards](https://quarto.org/docs/dashboards/interactivity/) to choose between client-side interaction and a server-backed application. Read [Observable JS](https://quarto.org/docs/interactive/ojs/) when client-side reactive views answer the need without a Shiny server.
+
+**You have enough when.** The interaction answers a defined reader question, the data and calculations behind each view are documented, and the deployment model matches privacy and infrastructure requirements.
+
+**Leave until later.** Do not adopt Observable JS, Shiny or complex linked views merely to make a static result move. Begin with a report when a fixed explanation answers the question better.
+:::
+
+::: {.route}
+## Need: share or preserve a project
+
+**Why it matters.** A working repository, a published website and a preserved research release are different products. GitHub supports collaboration and delivery; it is not automatically a long-term archive.
+
+**Read in this order.** Use Quarto's [Publishing overview](https://quarto.org/docs/publishing/) to choose a delivery route and its [GitHub Pages](https://quarto.org/docs/publishing/github-pages.html) page when a public repository and static site are appropriate. Read GitHub's guidance on [referencing and citing content](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content) before connecting a release to an archival service such as Zenodo. Follow institutional repository, data-governance and software-licensing guidance for the material being preserved.
+
+**You have enough when.** A specific release identifies the code, data or data identifiers, software environment, licences and publication it supports; an authorised reader can retrieve it without depending on a mutable working directory.
+
+**Leave until later.** Continuous deployment, custom domains, DOI automation and containers can wait until the project has a stable release worth publishing or preserving.
+:::
+
+## Return to the need
+
+Destinations change. The durable record maintains the relationship among evidence, code, decisions, prose and output. When a new format or tool appears, ask the same questions used throughout these notes: which failure or reader need does it address, what maintained material teaches it, what is enough for now, and which complexity can still wait?
+
+Next: [References](references.qmd).

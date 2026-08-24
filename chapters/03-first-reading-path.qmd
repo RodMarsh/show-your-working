@@ -1,0 +1,54 @@
+---
+title: "A first reading path"
+description: "Use maintained R and Quarto material to move from a manual document workflow to one integrated source."
+---
+
+This path is a deliberately short reading list. Its aim is not to make you fluent in R or expert in Quarto. It gets the three pieces—R, an editor and Quarto—into the right conceptual order, then points you to the maintained lessons that teach their use. If you prefer, R can be replaced by Python or Julia.
+
+Follow the routes in this chapter in order. Stop after the Quarto route if that is enough for now; project structure, Git and citations become useful when the first document turns into continuing research.
+
+::: {.route}
+## Need: establish the working environment
+
+**Why it matters.** R performs the computation, Quarto turns structured source into a reader-facing output, and an editor gives you a place to work with both. Confusing the R console, a saved source file and a terminal makes every later instruction harder to interpret.
+
+**Read in this order.** Install R from the [Comprehensive R Archive Network](https://cloud.r-project.org/). Follow Quarto's [Get Started](https://quarto.org/docs/get-started/) page for the current Quarto installation and editor integration. Choose either [Positron](https://positron.posit.co/download.html) or [RStudio Desktop](https://posit.co/downloads/) and use that editor's own introductory material; learning two interfaces at once adds little value.
+
+**You have enough when.** You can identify the R console, a saved `.R` or `.qmd` source file and the terminal, and you know which application is responsible for computation, authoring and rendering.
+
+**Leave until later.** Ignore Python, Julia, TeX, containers and editor customisation unless the first document actually requires them.
+:::
+
+::: {.route}
+## Need: begin learning enough R to understand an analysis
+
+**Why it matters.** Quarto can keep computation beside prose, but it does not remove the need to understand the computation. A researcher should be able to trace where data enter, what transformations occur and which object supplies a reported result.
+
+**Read in this order.** Use [R for Data Science (2e)](https://r4ds.hadley.nz/). Begin with [Data visualization](https://r4ds.hadley.nz/data-visualize.html) and [Workflow: basics](https://r4ds.hadley.nz/workflow-basics.html) for an early visible result and the basic expression–assignment distinction. Continue to [Data transformation](https://r4ds.hadley.nz/data-transform.html) and [Data tidying](https://r4ds.hadley.nz/data-tidy.html). Read [Workflow: scripts and projects](https://r4ds.hadley.nz/workflow-scripts.html) when you are ready to move useful work out of console history and into saved source.
+
+Run and change the examples while reading. The point is not to remember a catalogue of functions, but to learn how to inspect an object, read a sequence from top to bottom and check an intermediate result.
+
+**You have enough when.** You can read a short analysis, identify its input data and derived objects, explain a transformation in ordinary language and make one controlled change while checking its effect.
+
+**Leave until later.** Functions, iteration, package development and advanced modelling do not need to precede the first integrated document. Return to them when repetition or the scientific method requires them.
+:::
+
+::: {.route}
+## Need: create an integrated document
+
+**Why it matters.** In a manual workflow, explanation, copied results and the computation that produced them can drift apart. A Quarto source can keep prose, citations, code and generated results close enough to change together [@knuth1984].
+
+**Read in this order.** First browse the [Quarto Gallery](https://quarto.org/docs/gallery/) so that the destination is visible before the syntax. Complete the relevant editor path in [Get Started](https://quarto.org/docs/get-started/). Keep [Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html) open while learning headings, lists, links, images and code blocks. Then read [Using R](https://quarto.org/docs/computations/r.html) to understand executable cells and their options. Finish with the [authoring tutorial](https://quarto.org/docs/get-started/authoring/) sections on document components and multiple output formats.
+
+Use Quarto's official pages as your primary source for this exercise, since they are maintained alongside the software.
+
+Then let the document carry judgement as well as computation. Pick the most consequential analytical decision in your first document and record it beside the code, using the five-part decision record—choice, reason, timing, alternatives, consequence—from [Keeping inferential judgement visible](02-inferential-judgement.qmd). This is the step that makes an integrated document more than just a prettier script.
+
+**You have enough when.** You understand the difference between editable source and disposable output, have completed one official first-document exercise, can change the prose or analysis and regenerate the result, and have recorded one consequential decision beside the code that implements it.
+
+**Leave until later.** Do not begin with journal templates, custom themes, extensions, PDF engines, dashboards or publishing services. The destination routes return to those when a reader, collaborator or venue creates the need.
+:::
+
+The next route begins when the document is no longer a one-off exercise and needs to become a project you can leave and return to.
+
+Next: [A project you can return to](04-project-record.qmd).

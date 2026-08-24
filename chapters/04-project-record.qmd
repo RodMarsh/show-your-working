@@ -1,0 +1,95 @@
+---
+title: "A project you can return to"
+description: "Keep provenance, source, derived material and rebuild information understandable to future you."
+---
+
+An integrated report helps, but the report is only one part of a research project. Data arrive from somewhere, transformations produce new objects, software changes, and decisions accumulate. A useful project record makes those relationships easier to recover without relying on memory.
+
+## Organise by role, not application
+
+Exact folder names matter less than being able to tell what status a file has:
+
+| Status | Meaning | Treatment to aim for |
+|---|---|---|
+| **Source** | Received, collected or obtained from elsewhere | Preserve unchanged and document provenance |
+| **Code** | Instructions written by the project | Keep as editable source with a change history |
+| **Derived** | Produced from source data by code | Regenerate where practical |
+| **Report source** | Prose, citations and analytical instructions | Keep with the code and references it depends on |
+| **Rendered output** | HTML, DOCX, PDF, slides, figures or tables | Publish or archive intentionally; do not edit in place of the report source |
+
+This distinction is more durable than any one recommended directory tree. Add structure when the project contains material that needs it; an empty hierarchy created on day one does not make the work clearer.
+
+::: {.callout-tip title="Examples: directory structures worth borrowing from"}
+Each of these was designed for a particular kind of project, and each explains why it is arranged as it is. Read them as examples to borrow from, not as schemes to adopt whole.
+
+**A minimal starting layout.** [Wilson et al.'s good enough practices](https://doi.org/10.1371/journal.pcbi.1005510) propose `data/`, `src/`, `results/` and `doc/`, a language-agnostic arrangement that assumes nothing beyond a folder and a text editor [@wilson2017].
+
+**Collections and reasoning.** The Turing Way's [folder structure for research data](https://book.the-turing-way.org/reproducible-research/rdm/rdm-storage#folder-structure-for-research-data) gathers several worked templates alongside the reasoning behind them; Danielle Navarro's [project structure](https://slides.djnavarro.net/project-structure/) slides cover the same ground for an R audience.
+
+**A compendium built like a package.** The [research compendium](https://research-compendium.science/) pattern arranges an analysis the way an R package is arranged, so that data, code and prose travel together; [`rrtools`](https://github.com/benmarwick/rrtools) creates one, and Marwick, Boettiger and Mullen explain the reasoning [@marwick2018].
+
+**The same idea in Python.** [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) is worth reading, even if you do not adopt it, for its explicit separation of `data/raw`, `data/interim` and `data/processed`.
+
+**A layout tied to published results.** [workflowr](https://workflowr.github.io/workflowr/) suits an R project whose results are published as a website, and records which version of the source produced each rendered page.
+
+**A prescriptive replication package.** The [TIER Protocol](https://www.projecttier.org/tier-protocol/protocol-4-0/) specifies the structure in much more detail, and is aimed at empirical social science where the deliverable is a package a stranger has to run unaided.
+
+**A standard your field may already have.** Some communities have settled the question: neuroimaging has [BIDS](https://bids.neuroimaging.io/), which fixes file names, folder layout and accompanying metadata for everyone working with that kind of data. Look for one before inventing your own.
+
+Copy only the parts that match material the project actually holds.
+:::
+
+## Preserve provenance
+
+“Raw” data are the form in which the project received them. Correcting a spelling, excluding an observation or inserting a formula changes that record. Preserve the received form, express changes in code and write a derived result.
+
+For each source dataset, future you should be able to recover:
+
+- who or what supplied it and when;
+- the version, query, checksum, DOI or download location that identifies it;
+- what a row and column represent;
+- units and missing-value conventions;
+- licences, consent and access conditions; and
+- any transformations needed before analysis.
+
+The same principle applies to manually coded classifications, external lookup tables, image annotations and other inputs that can otherwise look like self-explanatory project files.
+
+::: {.callout-warning title="Reproducible does not mean public"}
+Never publish identifiable, sensitive, confidential, culturally restricted or contractually controlled data merely to make a repository appear complete. When data cannot be shared, document their identity, governance, access route and—where appropriate—a safe simulated or structural substitute.
+:::
+
+## Make location portable
+
+A path tied to one person's desktop records an accident of their computer rather than a relationship inside the project. Project-relative paths express that the report depends on an input or output in a known role. The same reasoning applies to URLs, database queries and object-storage keys: identify the source intentionally rather than relying on whatever location happens to work today.
+
+## Write for future you
+
+A project README is the entry point. It usually needs to say:
+
+1. what question the project addresses and its current status;
+2. how the main directories or documents are related;
+3. where source data came from and which access restrictions apply;
+4. what software or external services are needed;
+5. which source creates the main result;
+6. where the decision records for consequential analytical choices live; and
+7. what sequence rebuilds or updates that result.
+
+The decision records from [Keeping inferential judgement visible](02-inferential-judgement.qmd) belong to the project record too. Keep each one beside the analysis it governs, and let the README say where they are.
+
+Writing the sequence down exposes hidden dependencies before a pipeline is justified. Asking another person—or yourself in a clean session—to follow it reveals the assumptions the README still omits.
+
+::: {.route}
+## Need: turn a document into a project you can revisit
+
+**Why it matters.** Without a project record, a rerunnable report can still depend on unexplained files, undocumented edits and a remembered order of operations.
+
+**Read in this order.** Read [Good enough practices in scientific computing](https://doi.org/10.1371/journal.pcbi.1005510) for a pragmatic project baseline [@wilson2017]. Use [R for Data Science: Workflow—scripts and projects](https://r4ds.hadley.nz/workflow-scripts.html) for the R project model. Then use The Turing Way's [Research Data Management](https://book.the-turing-way.org/reproducible-research/rdm/) material for documentation, storage, sharing and governance decisions.
+
+**You have enough when.** After closing the project and starting a clean session, you can identify the authoritative inputs, distinguish generated material, explain the provenance and restrictions of each dataset, locate the decision records behind the main result, and follow the documented path to that result.
+
+**Leave until later.** Do not introduce a pipeline, container, remote object store or elaborate folder taxonomy while a short documented sequence and ordinary project-relative paths remain clear and reliable.
+:::
+
+Once the project has a recognisable shape, two additional records become useful: how its source changed and where its cited evidence came from.
+
+Next: [Keeping change and sources visible](05-change-and-sources.qmd).

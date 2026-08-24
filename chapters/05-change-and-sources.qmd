@@ -1,0 +1,55 @@
+---
+title: "Keeping change and sources visible"
+description: "Use version history and text-based citations when the project needs durable records of change and evidence."
+---
+
+A project becomes easier to revisit when two histories remain visible: how its own source changed, and which external sources support its claims. Git and a text bibliography address those different needs. Neither needs to be mastered all at once.
+
+**Git** was written in 2005 by Linus Torvalds. It was built so that thousands of contributors, working in parallel and often offline, could each hold a complete copy of the history, contribute to it independently, and still reconcile their work afterwards. The same machinery now runs most large software projects, and it does considerably more than record snapshots of development at a point in time—it can isolate speculative work on a branch, merge two lines of development, attribute every line of a file to the change that introduced it, search the history for the commit that broke a result, and mark a particular state as a released version. A research project needs almost none of that on the first day, which is why the route below stops at a single commit routine. It is worth knowing the capability is there, waiting for the point at which a collaborator, a reviewer or a published version creates the need. The [short history of Git](https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git) in *Pro Git* covers the background in a page.
+
+::: {.route}
+## Need: know what changed, when and why
+
+**Why it matters.** Filenames such as `final-v2-really-final` record anxiety rather than a usable history. A **Git** commit can preserve one understandable state, its exact difference from the previous state and a short reason for the change.
+
+**Read in this order.** Begin with the opening chapters of [Happy Git and GitHub for the useR](https://happygitwithr.com/) to understand repositories, commits and the relationship between local Git and GitHub. Use [Software Carpentry's Version Control with Git](https://swcarpentry.github.io/git-novice/) as a compact hands-on lesson. Consult [GitHub's learning resources](https://docs.github.com/en/get-started/start-your-journey/git-and-github-learning-resources) later if interactive practice would help with collaboration features.
+
+While reading, concentrate first on one routine: make one coherent change, inspect it, record it with an informative message and share it only when appropriate. The interface may be buttons or commands; the research value is the same inspectable history.
+
+Commit history also strengthens the **timing** field of a decision record from [Keeping inferential judgement visible](02-inferential-judgement.qmd): a decision committed before the relevant result was inspected carries its own evidence of when it was made.
+
+**You have enough when.** You can distinguish Git from GitHub, inspect what changed before recording it, recover an earlier state and write a commit message that explains one research-relevant change.
+
+**Leave until later.** Branch strategies, pull-request conventions, rebasing, automation and repository administration can wait until collaboration or release practice creates the need.
+:::
+
+## Safety before sharing
+
+A private history can still contain material that must not become public. Before changing a repository's visibility, check:
+
+- data rights, consent, ethics approval and governance;
+- names, email addresses and revealing comments in source files;
+- generated notebook, console and report output;
+- the full file history, not only the latest version;
+- credentials, tokens, private keys and internal URLs; and
+- third-party licences.
+
+Secrets do not belong in source, configuration committed to Git or rendered output. If one enters history, treat it as exposed and revoke it; deleting the visible line is not sufficient.
+
+::: {.route}
+## Need: keep citations connected to the source document
+
+**Why it matters.** Copying formatted references independently into Word documents creates several competing records. A text bibliography lets citation keys travel with the source and lets Quarto generate the chosen reference style when the document is rendered.
+
+**Read in this order.** Use Zotero's [Quick Start Guide](https://www.zotero.org/support/quick_start_guide) to establish a maintained reference library. Read [Quarto: Citations](https://quarto.org/docs/authoring/citations.html) for citation keys, bibliographies and CSL styles. If predictable keys and automatic BibTeX exports would solve a real coordination problem, follow the current [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/) documentation rather than older version-specific instructions.
+
+Keep the roles distinct: Zotero manages reference PDFs and metadata, a BibTeX file carries project citation data as text, and Quarto formats citations in an output. Automatic formatting cannot detect a wrong DOI, missing author, incorrect title or citation to the wrong version.
+
+**You have enough when.** You can correct an item in one reference library, cite its stable key from the source document, regenerate the output and verify both the in-text citation and reference entry.
+
+**Leave until later.** Custom CSL development, journal-specific edge cases and shared-library administration can wait until an actual collaborator or destination requires them.
+:::
+
+Git and BibTeX citations improve the record without changing the analysis itself. The next routes are for projects whose size, lifetime or dependencies create a new failure mode.
+
+Next: [Add another layer only when needed](06-next-layer.qmd).
