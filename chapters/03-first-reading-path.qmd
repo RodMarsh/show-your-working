@@ -19,6 +19,33 @@ Follow the routes in this chapter in order. Stop after the Quarto route if that 
 **Leave until later.** Ignore Python, Julia, TeX, containers and editor customisation unless the first document actually requires them.
 :::
 
+  ::: {.route}
+  ## Need: get comfortable writing in plain text
+
+  **Why it matters.** If you are used to MS Word, the editable source may initially
+  look unfinished: headings are marked with `#`, emphasis with `*` and links with
+  brackets and parentheses. Quarto applies the visual formatting when it renders
+  the document. This separation between source and output is a change of habit,
+  not a difficult new language.
+
+  **Read in this order.** Spend five minutes with
+  [Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html).
+  Learn only enough to write a heading, a paragraph, a list, emphasis and a link.
+  Put them in a `.qmd` file and render it. Keep the source and output beside each
+  other while you make a few changes.
+
+  Expect the markup to feel conspicuous at first. Continue using it for a
+  few days before deciding whether it is difficult; with ordinary use, you begin
+  to read the structure rather than the marks.
+
+  **You have enough when.** You can make a small change in the source, render it
+  and recognise the corresponding change in the output. You do not need to have
+  memorised the syntax or to feel completely at home with it.
+
+  **Leave until later.** Tables, fenced divs, raw HTML or LaTeX, custom styling
+  and other advanced Markdown features can wait until a document requires them.
+  :::
+
 ::: {.route}
 ## Need: begin learning enough R to understand an analysis
 
