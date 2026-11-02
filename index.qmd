@@ -4,7 +4,7 @@ subtitle: "A reading path to a research record that explains itself"
 description-meta: "A reading route through available material on R, Quarto and research practice focused on the limits and purposes of reproducibility."
 ---
 
-These notes are for researchers moving from manual Word-and-Excel workflows towards work that is easier to revisit, check and extend. The first beneficiary is usually you: the researcher returning after six months. The same record can later help collaborators, reviewers and successors.
+These notes are for researchers moving from manual Word-and-Excel workflows towards work that is easier to revisit, check, correct, and extend. The first beneficiary is usually you: the researcher returning after six months. The same record can later help collaborators, reviewers and successors.
 
 They aim to help you decide what to learn, in what order, why it matters and when you know enough to move on — so you can build R, Quarto and Git into a reproducible research workflow. They do not teach the tools themselves.
 
