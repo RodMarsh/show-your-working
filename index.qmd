@@ -1,6 +1,6 @@
 ---
 title: "Show your working"
-subtitle: "A reading path to a research record that explains itself"
+subtitle: "A reading guide to a research record that explains itself"
 description-meta: "A reading route through available material on R, Quarto and research practice focused on the limits and purposes of reproducibility."
 ---
 
