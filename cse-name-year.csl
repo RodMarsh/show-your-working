@@ -258,7 +258,7 @@
       </choose>
       <text prefix=" " macro="collection"/>
       <text prefix=" " macro="access"/>
-      <text variable="DOI" prefix=". https://doi.org/"/>
+      <text variable="DOI" prefix=". "/>
     </layout>
   </bibliography>
 </style>

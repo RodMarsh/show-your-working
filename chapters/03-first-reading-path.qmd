@@ -69,9 +69,11 @@ Run and change the examples while reading. The point is not to remember a catalo
 
 Use Quarto's official pages as your primary source for this exercise, since they are maintained alongside the software.
 
+Read [Inline Code](https://quarto.org/docs/computations/inline-code.html) to connect a numerical statement to a computed result. Use a value already calculated by the analysis, so the sentence and any table or figure reporting it share a source. Change an input in the exercise, rerun and check that both the displayed result and the number in the sentence update.
+
 Then let the document carry judgement as well as computation. Pick the most consequential analytical decision in your first document and record it beside the code, using the five-part decision record—choice, reason, timing, alternatives, consequence—from [Keeping inferential judgement visible](02-inferential-judgement.qmd). This is the step that makes an integrated document more than just a prettier script.
 
-**You have enough when.** You understand the difference between editable source and disposable output, have completed one official first-document exercise, can change the prose or analysis and regenerate the result, and have recorded one consequential decision beside the code that implements it.
+**You have enough when.** You have completed one official first-document exercise and understand the difference between editable source and disposable output. You can change an input and regenerate both an analytical output and a number embedded in prose, and have recorded one consequential decision beside the code that implements it.
 
 **Leave until later.** Do not begin with journal templates, custom themes, extensions, PDF engines, dashboards or publishing services. The destination routes return to those when a reader, collaborator or venue creates the need.
 :::

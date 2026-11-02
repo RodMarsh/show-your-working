@@ -36,9 +36,11 @@ This table is a diagnostic aid, not a recommended software stack.
 
 **Read in this order.** Read the [`{targets}` walkthrough](https://books.ropensci.org/targets/walkthrough.html) before the full [`{targets}` user manual](https://books.ropensci.org/targets/). If repeated logic is the immediate problem, begin instead with the functions and testing sections of [R Packages](https://r-pkgs.org/), especially [Testing basics](https://r-pkgs.org/testing-basics.html).
 
+With dependencies recorded, `{targets}` can identify which stages need to rerun after code or data change and reuse results that remain current. Include the report in that dependency structure: rebuilding the analysis alone does not update a report. The report must read the updated results and render again, including the numbers embedded in its prose.
+
 Treat checks as scientific guardrails as well as software tests: identifiers should be unique where expected, joins should not silently lose or multiply rows, values should remain within possible ranges and exclusions should remain counted.
 
-**You have enough when.** The dependency structure identifies which results are out of date, and important assumptions fail visibly rather than producing a plausible but wrong report.
+**You have enough when.** The dependency structure identifies which results are out of date and carries a controlled change through to the rendered report. Important assumptions fail visibly rather than producing a plausible but wrong report.
 
 **Leave until later.** Do not build a pipeline to make a three-step analysis look sophisticated. Do not turn every line into a function or test before repetition and risk justify the maintenance cost.
 :::

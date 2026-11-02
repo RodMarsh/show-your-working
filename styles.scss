@@ -45,6 +45,16 @@ table {
   font-size: 0.875em;
 }
 
+#refs .csl-entry + .csl-entry {
+  margin-top: 1rem;
+}
+
+#refs .csl-entry a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 575.98px) {
   main table {
     table-layout: fixed;

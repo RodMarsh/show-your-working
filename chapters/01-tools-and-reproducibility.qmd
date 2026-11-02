@@ -7,6 +7,14 @@ R can execute an analysis. Quarto can reconnect the source with tables, figures 
 
 Just because “the code ran” does not mean the analysis or conclusion is sound.
 
+## Make corrections carry through to the report
+
+A reproducible workflow makes an error easier to correct once it has been found. If an input or calculation changes, the recorded instructions provide a path through the affected analyses to the report. In a manual workflow, the researcher must reconstruct the steps, repeat them and find every copied result that needs replacing. Recording an executable workflow reduces that dependence on memory [@sandve2013].
+
+That path needs to reach the numbers inside sentences as well as tables and figures. Quarto's [inline code](https://quarto.org/docs/computations/inline-code.html) lets a sentence draw a value from a computed result when the document is rendered. Counts, estimates, percentages and uncertainty bounds can come from the same results used elsewhere in the report. A correction can then update every occurrence connected to those results, without a search through the document for numbers to retype.
+
+The computation may still take hours or days. The saving is in the work needed to reconstruct the analysis and carry its results into the report. You still need to check the corrected results and reconsider any interpretation that depends on them. Updating an estimate automatically does not establish that the sentence around it remains justified.
+
 ## Reproducing what?
 
 Terminology varies among disciplines. Goodman, Fanelli and Ioannidis proposed three descriptors that make the object of a reproducibility claim explicit [@goodman2016]:
