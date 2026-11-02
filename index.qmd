@@ -11,7 +11,7 @@ They aim to help you decide what to learn, in what order, why it matters and whe
 The notes focus primarily on three tools with three different jobs:
 
 | Tool | What it is | What it contributes |
-|----|------|------|
+|-----|------|------|
 | **[R](https://www.r-project.org/)** | An open-source language for data science and statistical computing | Replaces many manual spreadsheet operations with explicit instructions for preparing, analysing and visualising data, creating a record that can be inspected and run again |
 | **[Quarto](https://quarto.org/)** | An open-source publishing system for creating technical and scientific documents, presentations and websites from structured source files | Brings prose, citations, code and generated results into one publishing workflow, so the publication can be regenerated when the analysis changes |
 | **[Git](https://git-scm.com/)** | A distributed version-control system for files | Tracks how a project changes over time, making versions easier to compare, restore and share |

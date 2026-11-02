@@ -9,3 +9,5 @@
 /.positron/
 /notes/
 /papers/
+
+**/*.quarto_ipynb

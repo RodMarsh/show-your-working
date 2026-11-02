@@ -41,6 +41,13 @@ table {
   font-size: 0.96rem;
 }
 
+// Quarto sets `.table a { word-break: break-word }`, which lets auto table
+// layout squeeze a column of short links until words split ("Qua|rto").
+// No table here uses a bare URL as link text, so keep linked words whole.
+main .table a {
+  word-break: normal;
+}
+
 .table-note {
   font-size: 0.875em;
 }
